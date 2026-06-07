@@ -20,6 +20,8 @@ Abaixo podes ver o layout e o design visual implementado para o ecossistema do l
 * **Rotas Universais:** Integração direta com o Google Maps para traçar rotas de navegação (`Ver Rota`) ou visualizar o ponto comercial (`Abrir no Maps`).
 * **Arquitetura Baseada em Estados:** Gerenciamento visual fluído através de estados de UI (`loading`, `error`, `results`, `prompt`).
 
+![Layout do Localizador de Lojas Fanta](locations.png)
+
 ---
 
 ## 🛠️ Tecnologias Utilizadas
