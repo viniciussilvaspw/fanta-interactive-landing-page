@@ -8,7 +8,7 @@ Um localizador de pontos de venda interativo, responsivo e de alta performance d
 
 Abaixo podes ver o layout e o design visual implementado para o ecossistema do localizador de lojas Fanta, construído com foco na experiência do utilizador e responsividade móvel:
 
-![Layout do Localizador de Lojas Fanta](./imagem-site.jpg)
+![Layout do Localizador de Lojas Fanta](imagem-site.jpeg)
 
 ---
 

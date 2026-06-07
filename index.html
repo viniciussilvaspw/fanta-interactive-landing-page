@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="imagens/fanta-logo.png" type="image/png">
+    <title>Fanta Orange — Sometimes Do What You Want!</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="store.css">
+
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <nav class="nav-inner">
+                <a href="#home" class="nav-logo">
+                    <img src="imagens/fanta-logo.png" alt="Fanta Logo" />
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#refreshness">Products</a></li>
+                    <li><a href="#forest">Company</a></li>
+                </ul>
+
+                <span class="nav-cta">"Sometimes do what you want!"</span>
+
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home">Home</a>
+        <a href="#refreshness">Products</a>
+        <a href="#forest">Company</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-watermark" aria-hidden="true">
+            <span>FRESHNESS</span>
+            <span>OF ORANGE</span>
+        </div>
+
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="price-badge">
+                        <span class="label">Price -</span>
+                        <span class="amount">$ 1.03/-</span>
+                    </div>
+                    <a href="#refreshness" class="btn btn-dark">Order Now</a>
+                </div>
+
+                <div class="hero-center">
+                    <img src="imagens/laranja-metade.png" alt="Orange Slice Top" class="float-el float-orange-top" />
+                    <img src="imagens/fanta-lata.png" alt="Fanta Orange Can" class="hero-can" />
+                    <img src="imagens/folhas-menta.png" alt="Mint Leaf" class="float-el float-mint-right" />
+                    <img src="imagens/laranja-metade.png" alt="Orange Slice Bottom"
+                        class="float-el float-orange-bottom" />
+                </div>
+
+                <div class="hero-right">
+                    <span class="signature-label">Bolhas</span>
+                    <p>
+                        Pure citrus energy in every sip. Bold, vibrant and crafted to refresh your senses from the very
+                        first taste.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="refreshness" id="refreshness">
+        <div class="container">
+            <div class="refreshness-inner">
+                <div class="refreshness-img-wrap">
+                    <img src="imagens/laranja-metade.png" alt="Orange slice background"
+                        class="float-el refreshness-orange-back" />
+                    <img src="imagens/fanta-lata.png" alt="Fanta Can inclined" class="refreshness-can" />
+                    <img src="imagens/folhas-menta.png" alt="Mint Leaf" class="float-el refreshness-mint-bottom" />
+                </div>
+
+                <div class="refreshness-text">
+                    <h2>Grab the<br /><span class="text-blue">Refreshness</span><br />From Your<br />Local Store!</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                    </p>
+
+                    <div class="refreshness-btns">
+                        <a href="#refreshness" class="btn btn-outline" id="btn-locations">Locations</a>
+                        <a href="#home" class="btn btn-solid">Order Now</a>
+                    </div>
+
+                    <div class="orange-fruit-wrap">
+                        <img src="imagens/laranja-cortada.png" alt="Cut orange fruit with leaves"
+                            class="refreshness-orange-fruit" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL PREMIUM -->
+    <div id="storeModal" class="modal-premium" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🍊 Encontre FANTA perto de você</h3>
+                <button id="closeModalBtn" class="btn-close-modal" aria-label="Fechar">✕</button>
+            </div>
+            <div class="modal-body">
+                <!-- Busca manual -->
+                <div class="manual-search-group">
+                    <input type="text" id="manualSearchInput" placeholder="🔍 Digite sua cidade, bairro ou CEP..."
+                        autocomplete="off">
+                </div>
+
+                <!-- Estado: Prompt Inicial -->
+                <div id="statePrompt" class="state-container">
+                    <div style="font-size: 48px;">📍</div>
+                    <p style="margin-top: 12px; color: var(--text-secondary);">Ative sua localização ou digite um
+                        endereço acima para encontrar pontos de venda parceiros.</p>
+                    <button id="btnRetryGeolocation" class="btn-retry">📍 Ativar Localização</button>
+                </div>
+
+                <!-- Estado: Loading -->
+                <div id="stateLoading" class="state-container d-none">
+                    <div class="spinner-premium"></div>
+                    <p style="color: var(--fanta-orange); font-weight: 500;">Encontrando pontos próximos...</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Buscando supermercados e distribuidoras
+                        oficiais</p>
+                </div>
+
+                <!-- Estado: Erro -->
+                <div id="stateError" class="state-container d-none">
+                    <div style="font-size: 48px;">⚠️</div>
+                    <p id="errorMessage" style="color: #ff6b6b; margin: 12px 0;">Erro ao localizar</p>
+                    <button id="btnErrorRetry" class="btn-retry">Tentar Novamente</button>
+                </div>
+
+                <!-- Resultados -->
+                <ul id="storeResultsList" class="stores-list d-none"></ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="text-wall" id="textwall">
+        <div class="text-wall-bg" aria-hidden="true">
+            <div class="tw-row"><span>FANTA</span><span>FANTA</span><span>FANTA</span><span>FANTA</span></div>
+            <div class="tw-row"><span>FANTA</span><span>FANTA</span><span>FANTA</span><span>FANTA</span></div>
+            <div class="tw-row"><span>FANTA</span><span>FANTA</span><span>FANTA</span><span>FANTA</span></div>
+            <div class="tw-row"><span>FANTA</span><span>FANTA</span><span>FANTA</span><span>FANTA</span></div>
+            <div class="tw-row"><span>FANTA</span><span>FANTA</span><span>FANTA</span><span>FANTA</span></div>
+        </div>
+
+        <div class="container text-wall-container">
+            <div class="text-wall-inner">
+                <img src="imagens/laranja-metade.png" alt="Orange Slice Left" class="tw-orange tw-orange-left" />
+                <img src="imagens/fanta-lata.png" alt="Fanta Can center" class="tw-can" />
+                <img src="imagens/laranja-metade.png" alt="Orange Slice Right" class="tw-orange tw-orange-right" />
+
+                <div class="starburst-wrap">
+                    <div class="starburst" role="img" aria-label="Only $1.03 per can">
+                        <span class="badge-label">Only -</span>
+                        <span class="badge-price">$ 1.03</span>
+                        <span class="badge-sub">Per Can</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="forest" id="forest">
+        <div class="wooden-deck"></div>
+
+        <div class="container forest-content-container">
+            <div class="forest-can-wrap">
+                <img src="imagens/fanta-lata.png" alt="Fanta Can on wooden deck" class="forest-can" />
+            </div>
+
+            <div class="forest-left">
+                <span class="brand-text">FRESH<br />FANTA</span>
+            </div>
+
+            <div class="forest-right">
+                <div class="forest-price-box">
+                    <span class="only-label">Only —</span>
+                    <span class="forest-price">$ 1.03</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer-integrated">
+            <div class="container footer-inner">
+                <a href="#" class="footer-logo">
+                    <img src="imagens/fanta-logo.png" alt="Fanta Logo">
+                </a>
+
+                <ul class="footer-links">
+                    <li><a href="#home">Lar</a></li>
+                    <li><a href="#refreshness">Produtos</a></li>
+                    <li><a href="#forest">Empresa</a></li>
+                </ul>
+
+                <div class="footer-slogan">
+                    "ÀS VEZES, FAÇA O QUE VOCÊ QUER!"
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const drawerClose = document.getElementById('drawerClose');
+
+        function openDrawer() {
+            mobileDrawer.classList.add('open');
+            hamburgerBtn.innerHTML = '<i class="fas fa-times"></i>';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDrawer() {
+            mobileDrawer.classList.remove('open');
+            hamburgerBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = '';
+        }
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileDrawer.classList.contains('open') ? closeDrawer() : openDrawer();
+        });
+
+        drawerClose.addEventListener('click', closeDrawer);
+
+        document.addEventListener('click', (e) => {
+            if (
+                mobileDrawer.classList.contains('open') &&
+                !mobileDrawer.contains(e.target) &&
+                !hamburgerBtn.contains(e.target)
+            ) {
+                closeDrawer();
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const wm = document.querySelector('.hero-watermark');
+            if (wm) wm.style.transform = `translateY(${scrollY * 0.18}px)`;
+        }, { passive: true });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script src="locations.js"></script>
+
+</body>
+
+</html>
